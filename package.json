@@ -1,0 +1,32 @@
+{
+  "name": "express-template",
+  "version": "0.1.0",
+  "description": "express 开发模版",
+  "scripts": {
+    "dev": "nodemon project/index.js --exec babel-node",
+    "build": "babel project -d release --source-maps --copy-files",
+    "serve": "node release/index.js",
+    "test": "jest --config jest.json",
+    "init-docs": "docsify init ./docs",
+    "serve-docs": "docsify serve ./docs"
+  },
+  "author": "hellflame",
+  "license": "MIT",
+  "dependencies": {
+    "argparse": "^1.0.10",
+    "express": "^4.16.3",
+    "express-winston": "^3.0.0",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "docsify": "^4.7.1",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.4"
+  }
+}
