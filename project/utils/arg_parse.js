@@ -1,8 +1,10 @@
 import {ArgumentParser} from "argparse"
+import {version, description} from "@/utils/meta"
 
 export const parser = () =>{
   const _parser = ArgumentParser({
-    addHelp: true
+    version,
+    description
   })
 
   _parser.addArgument([

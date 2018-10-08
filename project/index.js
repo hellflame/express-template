@@ -1,8 +1,12 @@
 import Express from "express"
-import ExpressWinston from "express-winston"
-import Winston from "winston"
+
+import {es_winston_logger, es_winston_error_logger, common_logger} from "@/utils/log"
+import {compatible_version} from "@/utils/meta"
+import {parser} from "@/utils/arg_parse"
+
 const app = Express()
 const router = Express.Router()
+const parse = parser().parseArgs()
 
 router.get("/", (req, res) => {
     const result = {
@@ -11,26 +15,12 @@ router.get("/", (req, res) => {
     res.json(result)
 })
 
-app.use(ExpressWinston.logger({
-  transports: [
-    new Winston.transports.Console({
-      json: true,
-      colorize: true
-    })
-  ]
-}))
+app.use(es_winston_logger)
 
-app.use(router)
+app.use(`/v${compatible_version}`, router)
 
-app.use(ExpressWinston.errorLogger({
-  transports: [
-    new Winston.transports.Console({
-      json: true,
-      colorize: true
-    })
-  ]
-}))
+app.use(es_winston_error_logger)
 
-app.listen(3000, () => {
-    console.log("started")
+app.listen(parse.port, parse.host, () => {
+  common_logger.info("started")
 })

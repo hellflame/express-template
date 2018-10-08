@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon project/index.js --exec babel-node",
     "build": "babel project -d release --source-maps --copy-files",
-    "serve": "node release/index.js",
+    "serve": "NODE_ENV=production node release/index.js",
     "test": "jest --config jest.json",
     "init-docs": "docsify init ./docs",
     "serve-docs": "docsify serve ./docs"
