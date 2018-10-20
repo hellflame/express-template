@@ -30,18 +30,6 @@ const custom_format = printf(info => {
   })
 })
 
-export const common_logger = Winston.createLogger({
-  level: 'info',
-  format: combine(
-    label({label: "common"}),
-    timestamp(),
-    custom_format
-  ),
-  transports: [
-    new Winston.transports.Console()
-  ]
-})
-
 export const create_logger = (level="info", label="customize", save_to_file=null) => {
   const transports = [
     new Winston.transports.Console()
@@ -59,3 +47,5 @@ export const create_logger = (level="info", label="customize", save_to_file=null
     )
   })
 }
+
+export const common_logger = create_logger('info', 'common')
