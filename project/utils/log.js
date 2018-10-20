@@ -30,7 +30,7 @@ const custom_format = printf(info => {
   })
 })
 
-export const create_logger = (level="info", label="customize", save_to_file=null) => {
+export const create_logger = (level="info", _label="customize", save_to_file=null) => {
   const transports = [
     new Winston.transports.Console()
   ]
@@ -41,7 +41,7 @@ export const create_logger = (level="info", label="customize", save_to_file=null
     level,
     transports,
     format: combine(
-      label({label}),
+      label({_label}),
       timestamp(),
       custom_format
     )
