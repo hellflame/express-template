@@ -11,7 +11,7 @@ export const parser = () =>{
     "--host"
   ], {
     help: "listen host",
-    defaultValue: "127.0.0.1"
+    defaultValue: "0.0.0.0"
   })
 
   _parser.addArgument([
