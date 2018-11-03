@@ -1,3 +1,9 @@
+import {greet} from "@/model/hello"
+import {author} from "@/utils/meta"
+
 export function say_ok(req, res, next) {
-  return res.send("ok")
+  const {name = author} = req.body
+  return res.send(greet(name))
 }
+
+
